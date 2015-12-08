@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS237InClass6", "CIS237InClass6\CIS237InClass6.csproj", "{3663FD5A-91C8-4622-A5F1-1A24F09D1BE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIS237InClass6.Tests", "CIS237InClass6.Tests\CIS237InClass6.Tests.csproj", "{C1D25C56-194D-42BC-83DD-F9DC13A03740}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3663FD5A-91C8-4622-A5F1-1A24F09D1BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3663FD5A-91C8-4622-A5F1-1A24F09D1BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3663FD5A-91C8-4622-A5F1-1A24F09D1BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3663FD5A-91C8-4622-A5F1-1A24F09D1BE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D25C56-194D-42BC-83DD-F9DC13A03740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D25C56-194D-42BC-83DD-F9DC13A03740}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D25C56-194D-42BC-83DD-F9DC13A03740}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D25C56-194D-42BC-83DD-F9DC13A03740}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

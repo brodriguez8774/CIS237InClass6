@@ -1,0 +1,25 @@
+﻿@{
+    // @ here means anything within the {} brackets can be written in normal c# code.
+    // The title here will be used in the layout file.
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!--Testing of how ViewBags work.-->
+<h4>@ViewBag.SomethingElse</h4>
+<h1></h1>
+
+@{
+    // This is probably the most logic you'd ever want to do within your view.
+    // Anything that's much more complex should be saved for controllers or other sections of code. Not the view.
+    // Basically process everything you can outside the view. Only do view-processing in the view itself.
+    for (int i=0; i<5; i++)
+    {
+        <text>@ViewBag.SomethingElse &nbsp; </text>
+    } 
+}
+
+
+
+<p>Use this area to provide additional information.</p>
