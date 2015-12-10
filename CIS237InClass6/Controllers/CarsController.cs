@@ -18,7 +18,65 @@ namespace CIS237InClass6.Controllers
         // GET: /Cars/
         public ActionResult Index()
         {
-            return View(db.Cars.ToList());
+            // Set up variable to hold the Cars data set.
+            DbSet<Car> CarsToSearch = db.Cars;
+
+            string filterMake = "";
+            string filterMin = "";
+            string filterMax = "";
+
+            int minCyl = 0;
+            int maxCyl = 16;
+
+            // Cast session to variables, if there is anything in them.
+            if (Session["make"] != null && ((string)Session["make"]).Trim() != "")
+            {
+                filterMake = (string)Session["make"];
+            }
+
+            if (Session["min"] != null && ((string)Session["min"]).Trim() != "")
+            {
+                try
+                {
+                    string s = (string)Session["min"];
+                    minCyl = Convert.ToInt32(s);
+                    filterMin = s;
+                }
+                catch
+                {
+
+                }
+            }
+
+            if (Session["max"] != null && ((string)Session["max"]).Trim() != "")
+            {
+                try
+                {
+                    string s = (string)Session["max"];
+                    maxCyl = Convert.ToInt32(s);
+                    filterMax = s;
+                }
+                catch
+                {
+
+                }
+            }
+
+            // Do the filter on the CarsToSearch Dataset.
+            IEnumerable<Car> filtered = CarsToSearch.Where(car => car.cylinders >= minCyl &&
+                                                                    car.cylinders <= maxCyl &&
+                                                                    car.make.Contains(filterMake));
+
+            // Convert filtered DataSet to list.
+            IEnumerable<Car> finalFiltered = filtered.ToList();
+
+            // Add Session info to viewbag to send to view.
+            ViewBag.filterMake = filterMake;
+            ViewBag.filterMin = filterMin;
+            ViewBag.filterMax = filterMax;
+
+            // Return view with a filtered selection of cars.
+            return View(finalFiltered);
         }
 
         // GET: /Cars/Details/5
@@ -123,6 +181,24 @@ namespace CIS237InClass6.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpPost, ActionName("Filter")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Filter()
+        {
+            // Get form data.
+            string make = Request.Form.Get("make");
+            string min = Request.Form.Get("min");
+            string max = Request.Form.Get("max");
+
+            // Store in user's session. Default session timeout is 20 min.
+            Session["make"] = make;
+            Session["min"] = min;
+            Session["max"] = max;
+
+            // Redirect to index. We will do the work of actually filtering within index method.
+            return RedirectToAction("Index");
         }
     }
 }
